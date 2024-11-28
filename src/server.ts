@@ -7,7 +7,7 @@ const port: number = 3000;
 app.use(bodyParser.json());
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Hello, Express with TypeScript!");
+  res.send("Hello, Express with TypeScript");
 });
 
 app.listen(port, () => {
