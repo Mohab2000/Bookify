@@ -1,12 +1,12 @@
 {
-  "name": "bookify",
+  "name": "valet",
   "version": "0.1.0",
   "description": "",
   "main": "server.ts",
   "scripts": {
     "start": "nodemon --exec ts-node src/server.ts",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess \"node ./dist/server.js\"",
-    "build": "npx tsc",
+    "build": "npx tsc",     
     "jasmine": "jasmine",
     "test": "set ENV=test && db-migrate -e test up && npm run build && npm run jasmine && db-migrate -e test reset",
     "tsc": "tsc"
