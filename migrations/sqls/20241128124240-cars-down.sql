@@ -1,2 +1,2 @@
 /* Replace with your SQL commands */
-DROP TABLE cars;
+DROP TABLE IF EXISTS cars;

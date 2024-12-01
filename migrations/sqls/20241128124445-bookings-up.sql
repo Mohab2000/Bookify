@@ -9,6 +9,7 @@ CREATE TABLE bookings (
     status VARCHAR(50) DEFAULT 'pending',  -- e.g., 'pending', 'completed', 'cancelled'
     pickup_location VARCHAR(255),
     dropoff_location VARCHAR(255),
+    QRCode VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,

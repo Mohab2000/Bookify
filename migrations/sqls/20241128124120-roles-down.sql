@@ -1,2 +1,2 @@
 /* Replace with your SQL commands */
-DROP TABLE roles;
+DROP TABLE IF EXISTS roles;

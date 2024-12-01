@@ -1,2 +1,2 @@
 /* Replace with your SQL commands */
-DROP TABLE bookings;
+DROP TABLE IF EXISTS bookings;
