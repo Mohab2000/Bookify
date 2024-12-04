@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { Role, Roles } from "../models/role";
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
 const role = new Roles();
 
 const getAllRoles = async (req: Request, res: Response) => {
@@ -9,10 +9,10 @@ const getAllRoles = async (req: Request, res: Response) => {
 };
 const showRoleById = async (req: Request, res: Response) => {
   try {
-    // jwt.verify(req.body.token, process.env.JWT!);
+    // jwt.verify(req.headers.authorization?.split(" ")[1], process.env.JWT!);
   } catch (err) {
     res.status(401);
-    res.json("Invalid token");
+    res.json({ message: "Invalid token" });
     return;
   }
   const roleById = await role.showRoleById(req.params.id);
@@ -24,16 +24,16 @@ const updateRoleById = async (req: Request, res: Response) => {
       role_name: req.body.role_name,
     };
     try {
-      //   jwt.verify(req.body.token, process.env.JWT!);
+      //   jwt.verify(req.headers.authorization?.split(" ")[1], process.env.JWT!);
     } catch (err) {
       res.status(401);
-      res.json("Invalid token");
+      res.json({ message: "Invalid token" });
       return;
     }
     const updatedRole = await role.updateRoleById(updateRole, req.params.id);
     res.json(updatedRole);
   } catch (err) {
-    res.json(`Could not update Role ${err} `);
+    res.json({ message: `Could not update Role ${err} ` });
   }
 };
 const createRole = async (req: Request, res: Response) => {
@@ -45,9 +45,9 @@ const createRole = async (req: Request, res: Response) => {
 
     // Token verification
     try {
-      //   jwt.verify(req.body.token, process.env.JWT!);
+      //   jwt.verify(req.headers.authorization?.split(" ")[1], process.env.JWT!);
     } catch (err) {
-      res.status(401).json("Invalid token");
+      res.status(401).json({ message: "Invalid token" });
       return;
     }
 
@@ -55,7 +55,7 @@ const createRole = async (req: Request, res: Response) => {
     const createdRole = await role.createRole(newRole);
     res.json(createdRole); // Return the created role data, including the generated id
   } catch (err) {
-    res.status(500).json(`Could not create Role: ${err}`);
+    res.status(500).json({ message: `Could not create Role: ${err}` });
   }
 };
 const deleteRoleById = async (req: Request, res: Response) => {

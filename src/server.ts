@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import rolesRoutes from "./handlers/role";
+import userRoutes from "./handlers/user";
 
 const corsOptions = {
   origin: "http://someotherdomain.com",
@@ -18,6 +19,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 rolesRoutes(app);
+userRoutes(app);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
